@@ -1,0 +1,25 @@
+﻿# Compiled files
+*.dat
+*.dll
+*.exe
+*.log
+*.suo
+*.tmp
+*.user
+obj
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+Thumbs.db
+
+# Node files
+node_modules
+
+# Python files
+__pycache__
+*.pyc

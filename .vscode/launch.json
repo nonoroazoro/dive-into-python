@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Python Module",
+            "type": "python",
+            "request": "launch",
+            "module": "python",
+            "pythonPath": "${config:python.pythonPath}",
+            "internalConsoleOptions": "openOnSessionStart",
+            "cwd": "${workspaceRoot}",
+            "env": {},
+            "envFile": "${workspaceRoot}/.env",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        }
+    ]
+}
