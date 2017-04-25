@@ -1,4 +1,7 @@
-﻿# Compiled files
+﻿# VSCode files
+.vscode/.ropeproject
+
+# Compiled files
 *.dat
 *.dll
 *.exe
