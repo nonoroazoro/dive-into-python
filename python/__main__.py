@@ -1,4 +1,4 @@
-from .base import test
+from .data import prepare
 
 if __name__ == "__main__":
-    test()
+    prepare()
