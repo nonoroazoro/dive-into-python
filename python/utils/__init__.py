@@ -1,13 +1,32 @@
+import csv
 import json
 
 
-def load_json(p_name):
-    path = "data/in/{}.json".format(p_name)
+def load_json(name):
+    path = "data/in/{}.json".format(name)
     with open(path, mode="r", encoding="utf-8") as fp:
         return json.load(fp)
 
 
-def save_json(p_data, p_name):
-    path = "data/out/{}.json".format(p_name)
+def save_json(name, data):
+    path = "data/out/{}.json".format(name)
     with open(path, mode="w", encoding="utf-8") as fp:
-        json.dump(p_data, fp, ensure_ascii=False)
+        json.dump(data, fp, ensure_ascii=False)
+
+
+def load_csv(name):
+    path = "data/out/{}.csv".format(name)
+    with open(path, mode="r", encoding="utf-8") as fp:
+        fr = csv.reader(fp)
+        rows = [row for row in fr]
+        return rows
+
+
+def save_csv(name, headers=None, rows=None):
+    path = "data/out/{}.csv".format(name)
+    with open(path, mode="w", encoding="utf-8") as fp:
+        fw = csv.writer(fp)
+        if headers:
+            fw.writerow(headers)
+        if rows:
+            fw.writerows(rows)
