@@ -1,5 +1,5 @@
-from .data import pre_process
+from .data import pre_process, encode_features
 
 if __name__ == "__main__":
-    pre_process()
+    encode_features()
     print("good")

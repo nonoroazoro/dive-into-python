@@ -15,10 +15,10 @@ def save_json(name, data):
 
 
 def load_csv(name):
-    path = "data/in/{}.csv".format(name)
+    path = "data/out/{}.csv".format(name)
     with open(path, mode="r", encoding="utf-8") as fp:
         fr = csv.reader(fp)
-        return tuple(fr)
+        return list(fr)
 
 
 def save_csv(name, headers=None, rows=None):
