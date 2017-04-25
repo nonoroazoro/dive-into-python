@@ -18,8 +18,7 @@ def load_csv(name):
     path = "data/out/{}.csv".format(name)
     with open(path, mode="r", encoding="utf-8") as fp:
         fr = csv.reader(fp)
-        rows = [row for row in fr]
-        return rows
+        return tuple(fr)
 
 
 def save_csv(name, headers=None, rows=None):

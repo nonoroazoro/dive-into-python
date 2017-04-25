@@ -1,4 +1,5 @@
-from .data import prepare
+from .data import pre_process
 
 if __name__ == "__main__":
-    prepare()
+    pre_process()
+    print("good")

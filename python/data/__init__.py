@@ -1,1 +1,1 @@
-from .init_movies import prepare
+from .movies import pre_process

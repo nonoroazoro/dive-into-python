@@ -1,13 +1,15 @@
 from ..utils import load_json, save_csv, load_csv
 
 
-def prepare():
+def pre_process():
+    # load raw data.
     raw_data = load_json("raw_movies")
+
+    # extract features.
     features = extract_features(raw_data)
     save_features(features)
 
-    features = load_csv("features")
-    return raw_data
+    # features = [row[0] for row in load_csv("features")]
 
 
 def extract_features(movies):
