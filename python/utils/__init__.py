@@ -27,7 +27,7 @@ def save_csv(name, rows, headers=None):
                 fw.writerows(rows)
 
 
-def load_csv(name, include_header=False):
+def load_csv(name, include_header=True):
     path = "data/out/{}.csv".format(name)
     with open(path, mode="r", encoding="utf-8") as fp:
         if include_header:

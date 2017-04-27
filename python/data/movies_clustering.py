@@ -3,5 +3,5 @@ from sklearn.cluster import k_means
 
 
 def clustering():
-    encodings = load_csv("encodings", True)
+    encodings = load_csv("encodings")
     pass

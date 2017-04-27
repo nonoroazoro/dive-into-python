@@ -11,7 +11,7 @@ def pre_process():
 
 def encode_features():
     movies = load_json("raw_movies")
-    features = [row[0] for row in load_csv("features")]
+    features = [row[0] for row in load_csv("features", False)]
     length = len(features)
 
     encodings = []
