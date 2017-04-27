@@ -25,7 +25,7 @@ def encode_features():
         encodings.append({
             "id": movie.get("id"),
             "title": movie.get("title"),
-            "encoding": encoding
+            "encoding": "".join(map(str, encoding))
         })
 
     save_csv("encodings", encodings, ["id", "title", "encoding"])
