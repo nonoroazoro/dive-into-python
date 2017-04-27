@@ -22,10 +22,13 @@ def encode_features():
         _encode_feature(movie.get("tags", []), features, encoding)
         _encode_feature([cast.get("name") for cast in movie.get("casts", [])],
                         features, encoding)
-        encodings.append([movie.get("id"), movie.get("title"), encoding])
+        encodings.append({
+            "id": movie.get("id"),
+            "title": movie.get("title"),
+            "encoding": encoding
+        })
 
-    # headers = ["id", "title", "encoding"]
-    save_csv("encodings", rows=encodings)
+    save_csv("encodings", encodings, ["id", "title", "encoding"])
     return encodings
 
 
@@ -60,4 +63,4 @@ def _extract_features(movies):
 
 def _save_features(features):
     rows = [[feature] for feature in features]
-    save_csv("features", rows=rows)
+    save_csv("features", rows)
