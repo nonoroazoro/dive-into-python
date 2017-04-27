@@ -1,5 +1,7 @@
-from .data import pre_process, encode_features
+from .data import pre_process, encode_features, clustering
 
 if __name__ == "__main__":
-    encode_features()
+    # pre_process()
+    # encode_features()
+    clustering()
     print("good")
