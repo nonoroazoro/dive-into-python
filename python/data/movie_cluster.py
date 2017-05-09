@@ -11,7 +11,6 @@ def clustering(p_clusters=5):
 
     clusters = [{"movies": []} for _ in range(p_clusters)]
     for index, label in enumerate(labels):
-        movie = encodings[index]
-        clusters[label]["movies"].append(movie["id"])
+        clusters[label]["movies"].append(encodings[index])
 
     return {"clusters": clusters, "labels": labels, "score": score}
