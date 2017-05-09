@@ -1,5 +1,4 @@
 import numpy as np
-from functools import lru_cache
 
 from ..utils import load_json, load_csv, save_csv
 
@@ -29,7 +28,6 @@ def save_features(features, filename="features"):
     save_csv(filename, rows)
 
 
-@lru_cache()
 def load_features(filename="features"):
     return [row[0] for row in load_csv(filename, False)]
 
@@ -56,7 +54,6 @@ def save_encodings(encodings, filename="encodings"):
     save_csv(filename, encodings, ["id", "title", "encoding"])
 
 
-@lru_cache()
 def load_encodings(filename="encodings"):
     encodings = load_csv(filename)
     X = np.array([list(item["encoding"]) for item in encodings], dtype=np.int)
