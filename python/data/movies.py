@@ -20,8 +20,7 @@ def encode_features():
         _encode_feature(movie.get("countries", []), features, encoding)
         _encode_feature(movie.get("genres", []), features, encoding)
         _encode_feature(movie.get("tags", []), features, encoding)
-        _encode_feature([cast.get("name") for cast in movie.get("casts", [])],
-                        features, encoding)
+        _encode_feature([cast.get("name") for cast in movie.get("casts", [])], features, encoding)
         encodings.append({
             "id": movie.get("id"),
             "title": movie.get("title"),
