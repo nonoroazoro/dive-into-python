@@ -1,6 +1,6 @@
 import numpy as np
 
-from ..utils import load_json, load_csv, save_csv
+from ..utils import load_csv, save_csv
 
 
 def extract_features(movies):
