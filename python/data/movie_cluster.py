@@ -3,15 +3,16 @@ from functools import lru_cache
 from sklearn.cluster import KMeans
 from sklearn.metrics import calinski_harabaz_score
 
+from ..utils import save_json
 from .movie_feature import load_encodings, load_features, decode_features
 
 
-def clustering(p_clusters=5):
+def clustering(n_clusters=5):
     encodings, X = load_encodings()
-    labels = KMeans(n_clusters=p_clusters, random_state=8).fit_predict(X)
+    labels = KMeans(n_clusters=n_clusters, random_state=8).fit_predict(X)
     score = round(calinski_harabaz_score(X, labels), 2)
 
-    clusters = [{"movies": [], "features": []} for _ in range(p_clusters)]
+    clusters = [{"movies": [], "features": []} for _ in range(n_clusters)]
     for index, label in enumerate(labels):
         clusters[label]["movies"].append(encodings[index])
 
@@ -25,6 +26,15 @@ def clustering(p_clusters=5):
         # top 5 features
         cluster["features"].extend(features[indexes[:5]])
     return {"clusters": clusters, "labels": labels, "score": score}
+
+
+def save_clusters(clusters):
+    for key, item in clusters.items():
+        c = item["clusters"]
+        for cluster in c:
+            for movie in cluster["movies"]:
+                del movie["encoding"]
+        save_json("cluster_{}".format(key), c)
 
 
 @lru_cache()
