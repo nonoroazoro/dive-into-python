@@ -20,7 +20,7 @@ def extract_features(movies):
 
     features = set()
     features.update(casts, countries, genres, tags)
-    return list(features)
+    return features
 
 
 def save_features(features, filename="features"):
@@ -50,13 +50,26 @@ def encode_features(features, movies):
     return encodings
 
 
+def decode_features(encoding, features):
+    if len(encoding) == len(features):
+        tags = set()
+        for e, f in zip(encoding, features):
+            if e:
+                tags.add(f)
+        return tags
+    else:
+        raise ValueError("the length of encoding and features don't match")
+
+
 def save_encodings(encodings, filename="encodings"):
     save_csv(filename, encodings, ["id", "title", "encoding"])
 
 
 def load_encodings(filename="encodings"):
     encodings = load_csv(filename)
-    X = np.array([list(item["encoding"]) for item in encodings], dtype=np.int)
+    for _, item in enumerate(encodings):
+        item["encoding"] = np.array(list(map(int, item["encoding"])))
+    X = np.array([item["encoding"] for item in encodings])
     return (encodings, X)
 
 
